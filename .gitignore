@@ -1,0 +1,10 @@
+/bin
+/Imagens_OCR
+/include
+/lib
+/lib64
+/share
+/versoes_teste
+pyvenv.cfg
+texto_corrigido_gemini.txt
+texto_extraido_ocr.txt

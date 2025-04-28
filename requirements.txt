@@ -1,0 +1,5 @@
+easyocr
+easygui
+matplotlib
+pillow
+google.generativeai
