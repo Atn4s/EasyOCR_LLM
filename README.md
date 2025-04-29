@@ -7,6 +7,8 @@ Como executar o projeto:
 ```python
 python3 -m venv {nome_projeto}
 ```
+2. Entre no diretorio criado.
+
 3. Ative o ambiente virtual
 ```bash
 source {nome_projeto}/bin/activate
