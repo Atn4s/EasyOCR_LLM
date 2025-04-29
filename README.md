@@ -7,9 +7,13 @@ Como executar o projeto:
 ```python
 python3 -m venv {nome_projeto}
 ```
-2. Entre no diretorio criado.
-
-3. Ative o ambiente virtual
+2. Rode o git clone 
+```bash
+git clone https://github.com/Atn4s/EasyOCR_LLM.git
+```
+3. copie os arquivos de dentro do "EasyOCR_LLM" para o seu ambiente {nome do projeto}
+   
+4. Ative o ambiente virtual
 ```bash
 source {nome_projeto}/bin/activate
 ```
@@ -17,19 +21,19 @@ source {nome_projeto}/bin/activate
 ```python
 pip install -r requirements.txt
 ```
-7. Rode o OCR
+6. Rode o OCR
 ```python
 python3 EasyOCR.py
 ```
 (Resultado: um arquivo chamado texto_extraido_ocr.txt será criado com todo o texto extraído.)
 
-9. Configure a API do Gemini
+7. Configure a API do Gemini
 Você precisará de uma chave da API Gemini. Pegue a sua aqui: Google Cloud Console (https://console.cloud.google.com/)
 
 Depois, abra o arquivo LLM_Corrector_GEMINI.py e insira a chave da API neste trecho:
 genai.configure(api_key="insira_sua_chave_aqui")
 
-6. Rode a correção inteligente
+8. Rode a correção inteligente
 ```python
 python3 LLM_Corrector_GEMINI.py
 ```
