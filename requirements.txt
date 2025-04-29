@@ -3,3 +3,4 @@ easygui
 matplotlib
 pillow
 google.generativeai
+dotenv

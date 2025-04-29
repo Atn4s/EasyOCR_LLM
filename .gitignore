@@ -8,3 +8,4 @@
 pyvenv.cfg
 texto_corrigido_gemini.txt
 texto_extraido_ocr.txt
+.env

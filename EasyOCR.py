@@ -1,3 +1,4 @@
+import sys
 import easyocr
 import cv2
 import numpy as np
@@ -5,12 +6,23 @@ import easygui
 from PIL import Image, ImageDraw, ImageFont
 from matplotlib import pyplot as plt
 
-# === Abrir imagem via caixa de seleção ===
-img_path = easygui.fileopenbox()
+# === Abrir imagem via caixa de seleção ou linha de comando ===
+try:
+    if len(sys.argv) > 1:
+        img_path = sys.argv[1]
+    else:
+        img_path = easygui.fileopenbox()
+except:
+    print("Erro ao abrir a imagem. Verifique se o caminho está correto ou selecione uma imagem via caixa de diálogo.")
+    exit()
 
 # === Inicializa o leitor EasyOCR para português ===
-reader = easyocr.Reader(['pt', 'en'])
-result = reader.readtext(img_path)
+try:
+    reader = easyocr.Reader(['pt', 'en'])
+    result = reader.readtext(img_path)
+except Exception as e:
+    print(f"Erro ao inicializar o EasyOCR: {e}")
+    exit()
 
 # === Lê a imagem com OpenCV ===
 img = cv2.imread(img_path)
@@ -27,7 +39,7 @@ img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
 # === Carrega a fonte ABNT-2 ===
 font_path = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf' # Substitua pelo caminho correto para a fonte ABNT-2
-font = ImageFont.truetype(font_path, 30)  # Ajuste o tamanho da fonte conforme necessário
+font = ImageFont.truetype(font_path, 20)  # Ajuste o tamanho da fonte conforme necessário
 
 # === Cria um objeto de desenho para adicionar o texto ===
 draw = ImageDraw.Draw(img_pil)

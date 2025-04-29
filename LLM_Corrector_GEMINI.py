@@ -1,7 +1,11 @@
 import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-# === CONFIGURAR A CHAVE DA API DO GEMINI ===
-genai.configure(api_key="insira_sua_chave_aqui")
+# === CONFIGURAR A CHAVE DA API DO GEMINI === 
+# Para funcionar com o código abaixo, crie um arquivo .env com a variável: GEMINI_API_KEY="sua_chave_aqui"
+load_dotenv()
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
 # === Função para corrigir texto com Gemini ===
 def corrigir_texto(texto_original):
