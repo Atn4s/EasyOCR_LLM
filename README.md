@@ -4,39 +4,42 @@ Este projeto visa extrair texto das imagens usando EasyOCR e correção do texto
 
 Como executar o projeto:
 
-1. Rode o git clone 
+1. Realize um git clone do projeto: 
 ```bash
 git clone https://github.com/Atn4s/EasyOCR_LLM.git
 ```
 
-2. Crie um ambiente Python isolado
+2. Crie um ambiente Python isolado para ser utilizado:
 ```python
 python3 -m venv {nome_projeto}
 ```
 
-3. copie os arquivos de dentro do "EasyOCR_LLM" para o seu ambiente {nome do projeto}
+3. copie os arquivos do diretório do "EasyOCR_LLM" para o seu ambiente {nome do projeto}.
    
-4. Ative o ambiente virtual
+4. Ative o ambiente virtual:
 ```bash
 source {nome_projeto}/bin/activate
 ```
-
-5. Instale as dependências
+5. Instale as dependências:
 ```python
 pip install -r requirements.txt
 ```
-
-6. O EasyOCR pode ser executado de 2 formas: via /caminho/imagem.jpg ou simplesmente por: python3 EasyOCR.py no qual o EasyGUI irá abrir para selecionar uma imagem.
+6. O EasyOCR pode ser executado de 2 formas: passando a imagem direto para o programa <br>
 ```python
-python3 EasyOCR.py {caminho/imagem.jpg}
+python3 EasyOCR.py /caminho/imagem.jpg
+```
+ou com o EasyGUI para seleção de imagem: 
+```python
+python3 EasyOCR.py
 ```
 (Resultado: um arquivo chamado texto_extraido_ocr.txt será criado com todo o texto extraído.)
 
 7. Configure a API do Gemini
 Você precisará de uma chave da API Gemini. Pegue a sua aqui: Google Cloud Console (https://console.cloud.google.com/)
-Crie um .env com o texto: GEMINI_API_KEY="insira_sua_chave_aqui"
 
-8. Rode a correção inteligente
+8. Crie um .env com o texto: GEMINI_API_KEY="insira_sua_chave_aqui"
+
+9. Rode a correção inteligente
 ```python
 python3 LLM_Corrector_GEMINI.py
 ```
