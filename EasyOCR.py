@@ -1,3 +1,4 @@
+import os
 import sys
 import easyocr
 import cv2
@@ -6,15 +7,18 @@ import easygui
 from PIL import Image, ImageDraw, ImageFont
 from matplotlib import pyplot as plt
 
+# === Caminho para iniciar o EasyGUI ===
+load_path = "/home/joao/Downloads/IMAGENS_OCR"
+
 # === Abrir imagem via caixa de seleção ou linha de comando ===
 try:
-    if len(sys.argv) > 1:
-        img_path = sys.argv[1]
-    else:
-        img_path = easygui.fileopenbox()
+    img_path = sys.argv[1] if len(sys.argv) > 1 else easygui.fileopenbox(default=f"{load_path}/*")
 except:
     print("Erro ao abrir a imagem. Verifique se o caminho está correto ou selecione uma imagem via caixa de diálogo.")
     exit()
+
+# === Nome base do arquivo ===
+img_name = os.path.basename(img_path)
 
 # === Inicializa o leitor EasyOCR para português ===
 try:
@@ -59,10 +63,11 @@ for detection in result:
 img_final = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
 
 # === Mostra a imagem com as detecções ===
+plt.figure(figsize=(12, 16))  # Tamanho maior para melhor visualização  
 plt.imshow(cv2.cvtColor(img_final, cv2.COLOR_BGR2RGB))
-
+plt.title(f"OCR: {img_name}")
 plt.axis('off')
-plt.title("Texto detectado")
 plt.show()
 
 print("[+] Texto extraído salvo em: texto_extraido_ocr.txt")
+print(texto_bruto)
